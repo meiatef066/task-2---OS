@@ -1,17 +1,17 @@
-# Use a lightweight Node.js image
-FROM node:16-slim
 
-# Set working directory
+FROM node:16
+
 WORKDIR /app
 
-# Copy source files
-COPY src /app/src
+# Install app dependencies
+COPY package*.json ./
+RUN npm install
 
-# Install a static server for production
-RUN npm install -g serve
+# Bundle app source
+COPY . .
 
-# Expose port
-EXPOSE 5000
+# Expose the port the app runs on
+EXPOSE 3000
 
-# Serve the application
-CMD ["serve", "-s", "src", "-l", "5000"]
+# Start the application
+CMD ["npm", "start"]
