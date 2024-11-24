@@ -27,10 +27,13 @@ jobs:
       run: npm install
 
     - name: Run Tests
-      run: echo "No tests available"
-
-    - name: Debug: List Files in Directory
-      run: ls -la
+      run: echo "No tests available" 
 
     - name: Build Docker Image
       run: docker build -t calculator-js .
+
+    - name: Push to Docker Hub
+      run: |
+        echo "dckr_pat_71Vg8M_y3o7fZo25tpFoiDjGibU" | docker login -u "maiatef066" --password-stdin
+        docker tag calculator-js:latest maiatef066/calculator-js:latest
+        docker push maiatef066/calculator-js:latest
