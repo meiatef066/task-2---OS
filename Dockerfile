@@ -1,17 +1,14 @@
-
 FROM node:16
 
 WORKDIR /app
 
-# Install app dependencies
 COPY package*.json ./
+
+# Install dependencies
 RUN npm install
 
-# Bundle app source
 COPY . .
 
-# Expose the port the app runs on
 EXPOSE 3000
 
-# Start the application
 CMD ["npm", "start"]
