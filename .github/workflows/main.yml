@@ -18,5 +18,5 @@ jobs:
     - uses: actions/checkout@v3
 
     - name: "login to docker"
-      run : docker login --username maiatef066 --password dckr_pat_71Vg8M_y3o7fZo25tpFoiDjGibU
-      
+      run : docker login --username ${{secrets.DOCKER_USERNAME}} --password ${{secrets.DOCKER_TOKEN}}
+
